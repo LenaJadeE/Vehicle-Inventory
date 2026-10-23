@@ -91,6 +91,50 @@ public class VehicleInventory {
             System.out.println(("No vehicles found matching \"" + search + "\"."));
         }
     }
+    private static void findVehiclesByPrice() {
+        System.out.print("Enter minimum price: ");
+        double min = readDouble();
+        System.out.print("Enter maximum price: ");
+        double max = readDouble();
+
+        int matches = 0;
+        for (int i = 0; i < vehiclesCount; i++) {
+            double price = vehicles[i].getPrice();
+            if (price >= min && price <= max) {
+                if (matches == 0) {
+                    System.out.println();
+                    printHeader();
+                }
+                perloadVechicles(vehicles[i]);
+                matches++;
+            }
+        }
+
+        if (matches == 0) {
+            System.out.println("No vehicles found in that price range. ");
+        }
+    }
+    private static void findVehiclesByColor() {
+        System.out.print("Enter color to search for: ");
+        String color = scanner.nextLine().trim();
+
+        int matches = 0;
+        for (int i = 0; i < vehiclesCount; i++) {
+            if (vehicles[1].getColor().equalsIgnoreCase(color)) {
+                if(matches == 0) {
+                    System.out.println();
+                }
+                printVehicle(vehicles[i]);
+                matches++;
+            }
+        }
+        if (matches == 0) {
+            System.out.println("No" + color + " vehicles found.");
+        }
+    }
+
+
+
 
 
 
