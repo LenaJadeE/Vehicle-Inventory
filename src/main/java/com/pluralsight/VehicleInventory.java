@@ -1,5 +1,6 @@
 package com.pluralsight;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class VehicleInventory {
@@ -67,9 +68,29 @@ public class VehicleInventory {
         System.out.println();
         printHeader();
         for (int i = 0; i < vehiclesCount; i++) {
+            printVehicle(vehicles[i]);
+        }
     }
 
+    private static void findVehiclesByMakeModel(){
+        System.out.print("Enter make/model to search for: ");
+        String search = scanner.nextLine().trim().toLowerCase();
 
+        int matches = 0;
+        for (int i = 0; i < vehiclesCount, i++) {
+            if (vehicles[i].getMakeModel().toLowerCase().contains(search)) {
+                if (matches == 0) {
+                    System.out.println();
+                    printerHeader();
+                }
+                printerVechicle(vehicles[i]);
+                matches++;
+            }
+        }
+        if (matches == 0) {
+            System.out.println(("No vehicles found matching \"" + search + "\"."));
+        }
+    }
 
 
 
