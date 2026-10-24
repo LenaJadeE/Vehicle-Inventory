@@ -13,7 +13,7 @@ public class VehicleInventory {
     public static void main (String[] args){
         perloadVechicles();
 
-        boolean running = ture;
+        boolean running = true;
         while (running) {
             System.out.println();
             System.out.println("What do you want to do? ");
@@ -25,7 +25,7 @@ public class VehicleInventory {
             System.out.println("Quit                   6");
             System.out.println("Enter your command: ");
 
-            int command = rendInt();
+            int command = readInt();
 
             switch (command){
                 case 1:
@@ -77,13 +77,13 @@ public class VehicleInventory {
         String search = scanner.nextLine().trim().toLowerCase();
 
         int matches = 0;
-        for (int i = 0; i < vehiclesCount, i++) {
+        for (int i = 0; i < vehiclesCount; i++) {
             if (vehicles[i].getMakeModel().toLowerCase().contains(search)) {
                 if (matches == 0) {
                     System.out.println();
-                    printerHeader();
+                    printHeader();
                 }
-                printerVechicle(vehicles[i]);
+                printVechicle(vehicles[i]);
                 matches++;
             }
         }
@@ -105,7 +105,7 @@ public class VehicleInventory {
                     System.out.println();
                     printHeader();
                 }
-                perloadVechicles(vehicles[i]);
+                printVechicles(vehicles[i]);
                 matches++;
             }
         }
