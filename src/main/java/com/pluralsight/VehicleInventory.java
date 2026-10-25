@@ -133,8 +133,30 @@ public class VehicleInventory {
         }
     }
 
+    private static void addVehicle () {
+        if (vehiclesCount >= MAX_VEHICLES) {
+            System.out.println("The inventory is full (" + MAX_VEHICLES + " vehicles).");
+            return;
+        }
 
+        System.out.println("Vehicle ID: ");
+        long id = readLong();
+        System.out.println("Make/model: ");
+        String makeModel = scanner.nextLine().trim();
+        System.out.println("Color: ");
+        String color = scanner.nextLine().trim();
+        System.out.println("Odometer reading; ");
+        int odometer = readInt();
+        System.out.println("Price range: ");
+        double price = readDouble();
 
+        vehicles[vehiclesCount++] = new Vehicle(id, makeModel, color, odometer, price);
+        vehiclesCount++;
+
+        System.out.println("Vehicles added. Inventory now holds " + vehiclesCount + " vehicles.");
+
+    }
+    `
 
 
 
