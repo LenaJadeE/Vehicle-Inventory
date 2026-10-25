@@ -153,12 +153,20 @@ public class VehicleInventory {
         System.out.println("Price range: ");
         double price = readDouble();
 
-        vehicles[vehiclesCount++] = new Vehicle(id, makeModel, color, odometer, price);
-        vehiclesCount++;
+        Vehicle vehicle = new Vehicle(0, "", "", 0, 0);
+        vehicle.setVehicleId(id);
+        vehicle.setMakeModel(makeModel);
+        vehicle.setColor(color);
+        vehicle.setOdometerReading(odometer);
+        vehicle.setPrice(price);
+
+        vehicles[vehiclesCount++] = vehicle;
 
         System.out.println("Vehicles added. Inventory now holds " + vehiclesCount + " vehicles.");
 
     }
+
+
 
     private static void printHeader() {
         System.out.printf("%-8s %-20s %-8s %10s %12s%n", "ID", "Make", "Color", "Odometer", "Price");
