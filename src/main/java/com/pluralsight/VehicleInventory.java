@@ -44,6 +44,7 @@ public class VehicleInventory {
                     addVehicle();
                     break;
                 case 6:
+                    running = false;
                     System.out.println("Goodbye!");
                     break;
                 default:
@@ -51,7 +52,6 @@ public class VehicleInventory {
 
             }
 
-            running = false;
         }
     }
 
