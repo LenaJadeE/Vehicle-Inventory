@@ -1,16 +1,16 @@
 package com.pluralsight;
 
-import java.util.Locale;
 import java.util.Scanner;
 
 public class VehicleInventory {
     private static final int MAX_VEHICLES = 20;
 
-    private static Vehicle[] vehicles = new Vehicle[MAX_VEHICLES];
+    private static final Vehicle[] vehicles = new Vehicle[MAX_VEHICLES];
     private static int vehiclesCount = 0;
-    private static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
 
-    public static void main (String[] args){
+
+    public static void main(String[] args) {
         perloadVechicles();
 
         boolean running = true;
@@ -27,7 +27,7 @@ public class VehicleInventory {
 
             int command = readInt();
 
-            switch (command){
+            switch (command) {
                 case 1:
                     listAllVehicles();
                     break;
@@ -44,23 +44,24 @@ public class VehicleInventory {
                     addVehicle();
                     break;
                 case 6:
-                    running = false;
                     System.out.println("Goodbye!");
                     break;
                 default:
                     System.out.println("Invalid command. Please enter 1-6. ");
 
             }
+
+            running = false;
         }
     }
 
-    private static void perloadVechicles(){
-        vehicles[vehiclesCount++] = new Vehicle(101121,"Ford Explorer", "Red", 45000, 13500);
-        vehicles[vehiclesCount++] = new Vehicle(101122, "Toyota Camry", "Blue", 6000,11000);
-        vehicles[vehiclesCount++] = new Vehicle(101123,"Chevrolet Malibu", "Black", 50000, 9700);
-        vehicles[vehiclesCount++] = new Vehicle(101124,"Honda Civic", "White", 70000, 7500);
-        vehicles[vehiclesCount++] = new Vehicle(101125,"Subaru Outback", "Green", 55000,14500);
-        vehicles[vehiclesCount++] = new Vehicle(101126,"Jeep Wrangler", "Yellow", 30000, 16000);
+    private static void perloadVechicles() {
+        vehicles[vehiclesCount++] = new Vehicle(101121, "Ford Explorer", "Red", 45000, 13500);
+        vehicles[vehiclesCount++] = new Vehicle(101122, "Toyota Camry", "Blue", 6000, 11000);
+        vehicles[vehiclesCount++] = new Vehicle(101123, "Chevrolet Malibu", "Black", 50000, 9700);
+        vehicles[vehiclesCount++] = new Vehicle(101124, "Honda Civic", "White", 70000, 7500);
+        vehicles[vehiclesCount++] = new Vehicle(101125, "Subaru Outback", "Green", 55000, 14500);
+        vehicles[vehiclesCount++] = new Vehicle(101126, "Jeep Wrangler", "Yellow", 30000, 16000);
 
     }
 
@@ -72,7 +73,7 @@ public class VehicleInventory {
         }
     }
 
-    private static void findVehiclesByMakeModel(){
+    private static void findVehiclesByMakeModel() {
         System.out.print("Enter make/model to search for: ");
         String search = scanner.nextLine().trim().toLowerCase();
 
@@ -83,7 +84,7 @@ public class VehicleInventory {
                     System.out.println();
                     printHeader();
                 }
-                printVechicle(vehicles[i]);
+                printVehicle(vehicles[i]);
                 matches++;
             }
         }
@@ -91,6 +92,7 @@ public class VehicleInventory {
             System.out.println(("No vehicles found matching \"" + search + "\"."));
         }
     }
+
     private static void findVehiclesByPrice() {
         System.out.print("Enter minimum price: ");
         double min = readDouble();
@@ -105,7 +107,7 @@ public class VehicleInventory {
                     System.out.println();
                     printHeader();
                 }
-                printVechicles(vehicles[i]);
+                printVehicle(vehicles[i]);
                 matches++;
             }
         }
@@ -114,6 +116,7 @@ public class VehicleInventory {
             System.out.println("No vehicles found in that price range. ");
         }
     }
+
     private static void findVehiclesByColor() {
         System.out.print("Enter color to search for: ");
         String color = scanner.nextLine().trim();
@@ -121,7 +124,7 @@ public class VehicleInventory {
         int matches = 0;
         for (int i = 0; i < vehiclesCount; i++) {
             if (vehicles[1].getColor().equalsIgnoreCase(color)) {
-                if(matches == 0) {
+                if (matches == 0) {
                     System.out.println();
                 }
                 printVehicle(vehicles[i]);
@@ -133,7 +136,7 @@ public class VehicleInventory {
         }
     }
 
-    private static void addVehicle () {
+    private static void addVehicle() {
         if (vehiclesCount >= MAX_VEHICLES) {
             System.out.println("The inventory is full (" + MAX_VEHICLES + " vehicles).");
             return;
@@ -158,15 +161,43 @@ public class VehicleInventory {
     }
 
     private static void printHeader() {
-        System.out.printf("%-8s %-20s %-8s %10d %12s%n", "ID", "Make", "Color", "Odometer", "Price");
+        System.out.printf("%-8s %-20s %-8s %10s %12s%n", "ID", "Make", "Color", "Odometer", "Price");
 
     }
 
-    private static void printVechicles(Vehicle vehicle) {
+    private static void printVehicle(Vehicle vehicle) {
         System.out.printf("%-8d %-20s %-8s %10d %12.2f%n", vehicle.getVehicleId(), vehicle.getMakeModel(), vehicle.getColor(), vehicle.getOdometerReading(), vehicle.getPrice());
 
     }
 
+    private static int readInt() {
+        while (true) {
+            try {
+                return Integer.parseInt(scanner.nextLine().trim());
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a valid integer: ");
+            }
+        }
+    }
 
+    private static long readLong() {
+        while (true) {
+            try {
+                return Long.parseLong(scanner.nextLine().trim());
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a whole number: ");
+            }
+        }
+    }
 
+    private static double readDouble() {
+        while (true) {
+            try {
+                return Double.parseDouble(scanner.nextLine().trim());
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a number : ");
+
+            }
+        }
+    }
 }
