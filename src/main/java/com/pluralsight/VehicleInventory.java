@@ -156,9 +156,16 @@ public class VehicleInventory {
         System.out.println("Vehicles added. Inventory now holds " + vehiclesCount + " vehicles.");
 
     }
-    `
 
+    private static void printHeader() {
+        System.out.printf("%-8s %-20s %-8s %10d %12s%n", "ID", "Make", "Color", "Odometer", "Price");
 
+    }
+
+    private static void printVechicles(Vehicle vehicle) {
+        System.out.printf("%-8d %-20s %-8s %10d %12.2f%n", vehicle.getVehicleId(), vehicle.getMakeModel(), vehicle.getColor(), vehicle.getOdometerReading(), vehicle.getPrice());
+
+    }
 
 
 
