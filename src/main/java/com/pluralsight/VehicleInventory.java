@@ -123,7 +123,7 @@ public class VehicleInventory {
 
         int matches = 0;
         for (int i = 0; i < vehiclesCount; i++) {
-            if (vehicles[1].getColor().equalsIgnoreCase(color)) {
+            if (vehicles[i].getColor().equalsIgnoreCase(color)) {
                 if (matches == 0) {
                     System.out.println();
                 }
